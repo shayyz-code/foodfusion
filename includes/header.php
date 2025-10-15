@@ -12,7 +12,23 @@ $isLoggedIn = isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true;
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FoodFusion - Culinary Excellence</title>
+    <title>FoodFusion | Culinary Excellence</title>
+    <meta name="description" content="Discover delicious recipes, cooking tips, and food infographics to elevate your culinary skills.">
+    
+    <!-- Standard favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="public/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="public/favicon-16x16.png">
+
+    <!-- Apple touch icon (for iPhone/iPad) -->
+    <link rel="apple-touch-icon" sizes="180x180" href="public/apple-touch-icon.png">
+
+    <!-- Android Chrome -->
+    <link rel="icon" type="image/png" sizes="192x192" href="public/android-chrome-192x192.png">
+
+
+    <!-- Shortcut icon for older browsers -->
+    <link rel="shortcut icon" href="public/favicon.ico">
+
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="/foodfusion/assets/css/bootstrap.min.css">
     <!-- Font Awesome -->
@@ -40,9 +56,6 @@ $isLoggedIn = isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true;
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="community.php">Community Cookbook</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="news.php">News</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="culinary-resources.php">Culinary Resources</a>

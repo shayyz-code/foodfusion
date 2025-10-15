@@ -65,6 +65,19 @@ $tables = [
         content TEXT NOT NULL,
         image_path VARCHAR(255),
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    )",
+    
+    "CREATE TABLE IF NOT EXISTS recipe_ratings (
+        id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+        recipe_id INT NOT NULL,
+        user_id INT,
+        user_name VARCHAR(100),
+        rating INT NOT NULL CHECK (rating >= 1 AND rating <= 5),
+        comment TEXT,
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        FOREIGN KEY (recipe_id) REFERENCES recipes(id) ON DELETE CASCADE,
+        FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE SET NULL,
+        UNIQUE KEY unique_user_recipe (recipe_id, user_id)
     )"
 ];
 

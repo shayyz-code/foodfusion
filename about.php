@@ -22,7 +22,7 @@ include_once 'includes/header.php';
                 <p>Today, FoodFusion hosts thousands of recipes spanning every cuisine imaginable, from traditional family favorites to innovative fusion dishes that blend cultural influences in exciting new ways.</p>
             </div>
             <div class="col-md-6">
-                <img src="assets/images/about/our-story.jpg" alt="FoodFusion Story" class="img-fluid rounded shadow">
+                <img src="public/logo.png" alt="FoodFusion Logo" class="img-fluid rounded-5 shadow">
             </div>
         </div>
     </div>
