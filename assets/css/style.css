@@ -182,6 +182,10 @@ section h2:after {
   object-fit: cover;
 }
 
+.carousel-control-next,
+.carousel-control-prev {
+  filter: invert(1); /* invert white to black */
+}
 .carousel-caption {
   background-color: rgba(0, 0, 0, 0.7);
   padding: 20px;

@@ -246,7 +246,7 @@ include 'includes/header.php';
                                     <img src="<?php echo $recipe['image_path']; ?>" class="card-img-top recipe-img" alt="<?php echo $recipe['title']; ?>">
                                     <div class="card-body">
                                         <h5 class="card-title"><?php echo $recipe['title']; ?></h5>
-                                        <p class="card-text text-muted">By <?php echo $recipe['username']; ?></p>
+                                        <p class="card-text text-muted">By <?php echo $recipe['first_name'] . ' ' . $recipe['last_name']; ?></p>
                                         <div class="recipe-meta mb-2">
                                             <span class="badge badge-light"><?php echo $recipe['cuisine_type']; ?></span>
                                             <?php if (!empty($recipe['dietary_pref'])): ?>

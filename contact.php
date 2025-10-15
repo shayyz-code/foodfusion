@@ -69,29 +69,19 @@ include 'includes/header.php';
                     <div class="card mb-4">
                         <div class="card-body">
                             <h5 class="card-title"><i class="fas fa-map-marker-alt text-primary mr-2"></i> Our Location</h5>
-                            <p class="card-text">123 Culinary Street, Foodie District<br>Gourmet City, FC 12345</p>
+                            <p class="card-text">Yaw Min Gyi Street, Dagon District<br>Yangon City, Myanmar</p>
                         </div>
                     </div>
                     <div class="card mb-4">
                         <div class="card-body">
                             <h5 class="card-title"><i class="fas fa-phone text-primary mr-2"></i> Phone</h5>
-                            <p class="card-text">(123) 456-7890</p>
+                            <p class="card-text">(959) 456-7890</p>
                         </div>
                     </div>
                     <div class="card mb-4">
                         <div class="card-body">
                             <h5 class="card-title"><i class="fas fa-envelope text-primary mr-2"></i> Email</h5>
                             <p class="card-text">info@foodfusion.com</p>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title"><i class="fas fa-clock text-primary mr-2"></i> Hours</h5>
-                            <p class="card-text">
-                                Monday - Friday: 9:00 AM - 5:00 PM<br>
-                                Saturday: 10:00 AM - 2:00 PM<br>
-                                Sunday: Closed
-                            </p>
                         </div>
                     </div>
                 </div>
@@ -110,7 +100,7 @@ include 'includes/header.php';
                     <div class="card">
                         <div class="card-header" id="faqOne">
                             <h2 class="mb-0">
-                                <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                <button class="btn btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                                     How can I submit my own recipe?
                                 </button>
                             </h2>
@@ -124,12 +114,12 @@ include 'includes/header.php';
                     <div class="card">
                         <div class="card-header" id="faqTwo">
                             <h2 class="mb-0">
-                                <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                <button class="btn btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                                     How do I save my favorite recipes?
                                 </button>
                             </h2>
                         </div>
-                        <div id="collapseTwo" class="collapse" aria-labelledby="faqTwo" data-parent="#faqAccordion">
+                        <div id="collapseTwo" class="collapse show" aria-labelledby="faqTwo" data-parent="#faqAccordion">
                             <div class="card-body">
                                 To save your favorite recipes, you need to create an account and log in. Once logged in, you can click the "Save" button on any recipe page to add it to your favorites. You can access your saved recipes from your profile page.
                             </div>
@@ -138,12 +128,12 @@ include 'includes/header.php';
                     <div class="card">
                         <div class="card-header" id="faqThree">
                             <h2 class="mb-0">
-                                <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                <button class="btn btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
                                     Can I request a specific recipe?
                                 </button>
                             </h2>
                         </div>
-                        <div id="collapseThree" class="collapse" aria-labelledby="faqThree" data-parent="#faqAccordion">
+                        <div id="collapseThree" class="collapse show" aria-labelledby="faqThree" data-parent="#faqAccordion">
                             <div class="card-body">
                                 Yes! You can request specific recipes by using the contact form on this page. Select "Recipe Request" as the subject and provide details about the recipe you're looking for. Our culinary team will try to create and share the requested recipe.
                             </div>
@@ -152,12 +142,12 @@ include 'includes/header.php';
                     <div class="card">
                         <div class="card-header" id="faqFour">
                             <h2 class="mb-0">
-                                <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                <button class="btn btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
                                     How can I become a contributor?
                                 </button>
                             </h2>
                         </div>
-                        <div id="collapseFour" class="collapse" aria-labelledby="faqFour" data-parent="#faqAccordion">
+                        <div id="collapseFour" class="collapse show" aria-labelledby="faqFour" data-parent="#faqAccordion">
                             <div class="card-body">
                                 If you're interested in becoming a regular contributor to FoodFusion, please contact us using the form on this page. Select "Partnership" as the subject and tell us about your culinary background and interests. We're always looking for passionate food enthusiasts to join our community!
                             </div>

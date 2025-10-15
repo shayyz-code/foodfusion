@@ -42,6 +42,9 @@ $isLoggedIn = isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true;
                         <a class="nav-link" href="community.php">Community Cookbook</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="news.php">News</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="culinary-resources.php">Culinary Resources</a>
                     </li>
                     <li class="nav-item">

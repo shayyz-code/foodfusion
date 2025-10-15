@@ -10,7 +10,7 @@ $featured_recipes_query = "SELECT * FROM recipes ORDER BY created_at DESC LIMIT 
 $featured_recipes = mysqli_query($conn, $featured_recipes_query);
 
 // Get upcoming events
-$events_query = "SELECT * FROM events WHERE event_date >= CURDATE() ORDER BY event_date ASC LIMIT 3";
+$events_query = "SELECT * FROM events ORDER BY event_date ASC LIMIT 3";
 $events = mysqli_query($conn, $events_query);
 
 // Get news feed
@@ -117,52 +117,49 @@ $news = mysqli_query($conn, $news_query);
 <section class="events-carousel">
     <div class="container">
         <h2>Upcoming Cooking Events</h2>
-        <div id="eventsCarousel" class="carousel slide" data-ride="carousel">
-            <ol class="carousel-indicators">
-                <?php
-                $event_count = mysqli_num_rows($events);
-                for ($i = 0; $i < $event_count; $i++) {
-                    echo '<li data-target="#eventsCarousel" data-slide-to="' . $i . '"' . ($i == 0 ? ' class="active"' : '') . '></li>';
-                }
-                ?>
-            </ol>
+        <div id="eventsCarousel" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
                 <?php
-                if ($event_count > 0) {
+                if (mysqli_num_rows($events) > 0) {
                     $active = true;
                     while ($event = mysqli_fetch_assoc($events)) {
                 ?>
                     <div class="carousel-item <?php echo $active ? 'active' : ''; ?>">
-                        <img src="<?php echo $event['image_path']; ?>" class="d-block w-100" alt="<?php echo $event['title']; ?>">
-                        <div class="carousel-caption d-none d-md-block">
-                            <h5><?php echo $event['title']; ?></h5>
-                            <p><?php echo $event['description']; ?></p>
-                            <p><strong>Date: <?php echo date('F d, Y', strtotime($event['event_date'])); ?></strong></p>
-                            <a href="events.php" class="btn btn-light">View All Events</a>
+                    <div class="d-flex justify-content-center align-items-center" style="height: 200px; background-color: #f8f9fa;">
+                        <div class="text-center">
+                        <h5><?php echo htmlspecialchars($event['title']); ?></h5>
+                        <p><?php echo htmlspecialchars($event['description']); ?></p>
+                        <p><strong>Date: <?php echo date('F d, Y', strtotime($event['event_date'])); ?></strong></p>
                         </div>
+                    </div>
                     </div>
                 <?php
                         $active = false;
                     }
                 } else {
-                    echo '<div class="carousel-item active">
-                            <img src="assets/images/events/default.jpg" class="d-block w-100" alt="No Events">
-                            <div class="carousel-caption d-none d-md-block">
-                                <h5>No Upcoming Events</h5>
-                                <p>Check back soon for exciting cooking events!</p>
-                            </div>
-                          </div>';
+                ?>
+                    <div class="carousel-item active">
+                    <div class="d-flex justify-content-center align-items-center" style="height: 200px; background-color: #f8f9fa;">
+                        <div class="text-center">
+                        <h5>No Upcoming Events</h5>
+                        <p>Check back soon for exciting cooking events!</p>
+                        </div>
+                    </div>
+                    </div>
+                <?php
                 }
                 ?>
             </div>
-            <a class="carousel-control-prev" href="#eventsCarousel" role="button" data-slide="prev">
+
+            <!-- Carousel Controls -->
+            <button class="carousel-control-prev" type="button" data-bs-target="#eventsCarousel" data-bs-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#eventsCarousel" role="button" data-slide="next">
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#eventsCarousel" data-bs-slide="next">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-            </a>
+                <span class="visually-hidden">Next</span>
+            </button>
         </div>
     </div>
 </section>

@@ -23,37 +23,37 @@ include 'includes/header.php';
         <div class="row">
             <div class="col-md-4 mb-4">
                 <div class="card h-100">
-                    <img src="assets/images/recipe-card-1.jpg" class="card-img-top" alt="Classic Pasta Recipe Card">
+                    <img src="assets/images/ebooks/pasta_collection.jpeg" class="card-img-top" alt="Classic Pasta Recipe Card">
                     <div class="card-body">
                         <h5 class="card-title">Classic Pasta Collection</h5>
                         <p class="card-text">5 essential pasta recipes every home cook should master.</p>
                     </div>
                     <div class="card-footer bg-white border-top-0">
-                        <a href="#" class="btn btn-primary btn-sm"><i class="fas fa-download mr-1"></i> Download PDF</a>
+                        <a href="assets/ebooks/pasta_collection.pdf" class="btn btn-primary btn-sm"><i class="fas fa-download mr-1"></i> Download PDF</a>
                     </div>
                 </div>
             </div>
             <div class="col-md-4 mb-4">
                 <div class="card h-100">
-                    <img src="assets/images/recipe-card-2.jpg" class="card-img-top" alt="Baking Basics Recipe Card">
+                    <img src="assets/images/ebooks/baking_basics.jpeg" class="card-img-top" alt="Baking Basics Recipe Card">
                     <div class="card-body">
                         <h5 class="card-title">Baking Basics</h5>
                         <p class="card-text">Essential recipes for cookies, cakes, and breads with detailed instructions.</p>
                     </div>
                     <div class="card-footer bg-white border-top-0">
-                        <a href="#" class="btn btn-primary btn-sm"><i class="fas fa-download mr-1"></i> Download PDF</a>
+                        <a href="assets/ebooks/baking_basics.pdf" class="btn btn-primary btn-sm"><i class="fas fa-download mr-1"></i> Download PDF</a>
                     </div>
                 </div>
             </div>
             <div class="col-md-4 mb-4">
                 <div class="card h-100">
-                    <img src="assets/images/recipe-card-3.jpg" class="card-img-top" alt="Healthy Meals Recipe Card">
+                    <img src="assets/images/ebooks/healthy_meals.jpeg" class="card-img-top" alt="Healthy Meals Recipe Card">
                     <div class="card-body">
                         <h5 class="card-title">30-Minute Healthy Meals</h5>
                         <p class="card-text">Quick and nutritious recipes for busy weeknights.</p>
                     </div>
                     <div class="card-footer bg-white border-top-0">
-                        <a href="#" class="btn btn-primary btn-sm"><i class="fas fa-download mr-1"></i> Download PDF</a>
+                        <a href="assets/ebooks/healthy_meals.epub" class="btn btn-primary btn-sm"><i class="fas fa-download mr-1"></i> Download PDF</a>
                     </div>
                 </div>
             </div>
@@ -70,15 +70,14 @@ include 'includes/header.php';
         <div class="row">
             <div class="col-lg-6 mb-4">
                 <div class="card tutorial-card">
-                    <div class="row no-gutters">
-                        <div class="col-md-4">
-                            <img src="assets/images/knife-skills.jpg" class="card-img" alt="Knife Skills Tutorial">
+                    <div class="row">
+                        <div class="p-4" style="display: flex; justify-content: center;">
+                            <iframe width="400" height="auto" style="aspect-ratio: 929/523;" src="https://www.youtube.com/embed/YrHpeEwk_-U" title="9 Essential Knife Skills To Master | Epicurious 101" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                         </div>
-                        <div class="col-md-8">
+                        <div>
                             <div class="card-body">
                                 <h5 class="card-title">Knife Skills 101</h5>
-                                <p class="card-text">Learn proper cutting techniques to improve your efficiency and safety in the kitchen.</p>
-                                <a href="#" class="btn btn-outline-primary btn-sm">View Tutorial</a>
+                                <p class="card-text">Master the five essential knife skills to enhance your cooking.</p>
                             </div>
                         </div>
                     </div>
@@ -86,47 +85,14 @@ include 'includes/header.php';
             </div>
             <div class="col-lg-6 mb-4">
                 <div class="card tutorial-card">
-                    <div class="row no-gutters">
-                        <div class="col-md-4">
-                            <img src="assets/images/sauce-basics.jpg" class="card-img" alt="Sauce Basics Tutorial">
+                    <div class="row">
+                        <div class="p-4" style="display: flex; justify-content: center;">
+                            <iframe width="400" height="auto" style="aspect-ratio: 929/523;" src="https://www.youtube.com/embed/LpalC9v8ffQ" title="These 5 Sauces Will Upgrade Your Weeknight Meal Game | Epicurious 101" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                         </div>
-                        <div class="col-md-8">
+                        <div>
                             <div class="card-body">
                                 <h5 class="card-title">Sauce Basics</h5>
                                 <p class="card-text">Master the five mother sauces and elevate your cooking instantly.</p>
-                                <a href="#" class="btn btn-outline-primary btn-sm">View Tutorial</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6 mb-4">
-                <div class="card tutorial-card">
-                    <div class="row no-gutters">
-                        <div class="col-md-4">
-                            <img src="assets/images/baking-science.jpg" class="card-img" alt="Baking Science Tutorial">
-                        </div>
-                        <div class="col-md-8">
-                            <div class="card-body">
-                                <h5 class="card-title">Baking Science</h5>
-                                <p class="card-text">Understand the chemistry behind baking for consistently perfect results.</p>
-                                <a href="#" class="btn btn-outline-primary btn-sm">View Tutorial</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6 mb-4">
-                <div class="card tutorial-card">
-                    <div class="row no-gutters">
-                        <div class="col-md-4">
-                            <img src="assets/images/meal-prep.jpg" class="card-img" alt="Meal Prep Tutorial">
-                        </div>
-                        <div class="col-md-8">
-                            <div class="card-body">
-                                <h5 class="card-title">Meal Prep Mastery</h5>
-                                <p class="card-text">Learn how to efficiently prepare meals for the entire week in just a few hours.</p>
-                                <a href="#" class="btn btn-outline-primary btn-sm">View Tutorial</a>
                             </div>
                         </div>
                     </div>
@@ -145,11 +111,8 @@ include 'includes/header.php';
         <div class="row">
             <div class="col-md-6 col-lg-4 mb-4">
                 <div class="card video-card h-100">
-                    <div class="video-thumbnail">
-                        <img src="assets/images/video-thumbnail-1.jpg" class="card-img-top" alt="Perfect Steak Video">
-                        <a href="#" class="video-play-button">
-                            <i class="fas fa-play"></i>
-                        </a>
+                    <div class="video-thumbnail" style="display: flex; justify-content: center;">
+                        <iframe width="400" height="auto" style="aspect-ratio: 929/523;" src="https://www.youtube.com/embed/AmC9SmCBUj4" title="Gordon Ramsay&#39;s ULTIMATE COOKERY COURSE: How to Cook the Perfect Steak" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                     </div>
                     <div class="card-body">
                         <h5 class="card-title">How to Cook the Perfect Steak</h5>
@@ -162,15 +125,12 @@ include 'includes/header.php';
             </div>
             <div class="col-md-6 col-lg-4 mb-4">
                 <div class="card video-card h-100">
-                    <div class="video-thumbnail">
-                        <img src="assets/images/video-thumbnail-2.jpg" class="card-img-top" alt="Bread Baking Video">
-                        <a href="#" class="video-play-button">
-                            <i class="fas fa-play"></i>
-                        </a>
+                    <div class="video-thumbnail" style="display: flex; justify-content: center;">
+                        <iframe width="400" height="auto" style="aspect-ratio: 929/523;" src="https://www.youtube.com/embed/Xw_NgS8iqhU" title="Easy Artisan Bread Recipe | No Kneading!" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                     </div>
                     <div class="card-body">
                         <h5 class="card-title">Artisan Bread Baking</h5>
-                        <p class="card-text">Master the art of baking crusty, delicious bread with simple techniques.</p>
+                        <p class="card-text">Learn the secrets of baking bread with a touch of artistry.</p>
                     </div>
                     <div class="card-footer bg-white border-top-0">
                         <small class="text-muted"><i class="far fa-clock mr-1"></i> 18:30 minutes</small>
@@ -179,11 +139,8 @@ include 'includes/header.php';
             </div>
             <div class="col-md-6 col-lg-4 mb-4">
                 <div class="card video-card h-100">
-                    <div class="video-thumbnail">
-                        <img src="assets/images/video-thumbnail-3.jpg" class="card-img-top" alt="Kitchen Hacks Video">
-                        <a href="#" class="video-play-button">
-                            <i class="fas fa-play"></i>
-                        </a>
+                    <div class="video-thumbnail" style="display: flex; justify-content: center;">
+                        <iframe width="400" height="auto" style="aspect-ratio: 929/523;" src="https://www.youtube.com/embed/OcBs5miKM2Y" title="10 Cooking Hacks | Save Money &amp; Time | creative explained" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                     </div>
                     <div class="card-body">
                         <h5 class="card-title">10 Essential Kitchen Hacks</h5>
@@ -191,39 +148,6 @@ include 'includes/header.php';
                     </div>
                     <div class="card-footer bg-white border-top-0">
                         <small class="text-muted"><i class="far fa-clock mr-1"></i> 8:15 minutes</small>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <div class="text-center mt-4">
-            <a href="#" class="btn btn-primary">View All Videos</a>
-        </div>
-    </div>
-</section>
-
-<!-- Kitchen Equipment Guide Section -->
-<section class="equipment-section py-5 bg-light">
-    <div class="container">
-        <h2 class="section-title mb-4">Kitchen Equipment Guide</h2>
-        <p class="section-description mb-4">Downloadable guides to help you choose the right tools for your kitchen.</p>
-        
-        <div class="row">
-            <div class="col-md-6 mb-4">
-                <div class="card h-100">
-                    <div class="card-body">
-                        <h5 class="card-title"><i class="fas fa-utensils text-primary mr-2"></i> Essential Kitchen Tools</h5>
-                        <p class="card-text">A comprehensive guide to the must-have tools for every home kitchen, from knives to pots and pans.</p>
-                        <a href="#" class="btn btn-outline-primary btn-sm"><i class="fas fa-download mr-1"></i> Download Guide</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 mb-4">
-                <div class="card h-100">
-                    <div class="card-body">
-                        <h5 class="card-title"><i class="fas fa-blender text-primary mr-2"></i> Small Appliance Buying Guide</h5>
-                        <p class="card-text">How to choose the right blenders, food processors, and other small appliances for your cooking needs.</p>
-                        <a href="#" class="btn btn-outline-primary btn-sm"><i class="fas fa-download mr-1"></i> Download Guide</a>
                     </div>
                 </div>
             </div>

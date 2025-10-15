@@ -186,8 +186,6 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
                     <h4>Recipe Actions</h4>
                     <div class="action-buttons mt-3">
                         <a href="#" class="btn btn-outline-secondary btn-block mb-2" onclick="window.print()"><i class="fas fa-print"></i> Print Recipe</a>
-                        <a href="#" class="btn btn-outline-primary btn-block mb-2"><i class="far fa-bookmark"></i> Save Recipe</a>
-                        <a href="#" class="btn btn-outline-success btn-block"><i class="fas fa-shopping-basket"></i> Add to Shopping List</a>
                     </div>
                 </div>
                 

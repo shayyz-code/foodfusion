@@ -30,7 +30,6 @@
                     <ul class="list-unstyled footer-links">
                         <li><a href="privacy.php" class="text-white">Privacy Policy</a></li>
                         <li><a href="terms.php" class="text-white">Terms of Use</a></li>
-                        <li><a href="#" class="text-white cookie-settings">Cookie Settings</a></li>
                     </ul>
                 </div>
                 
