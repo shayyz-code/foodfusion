@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Oct 15, 2025 at 02:08 PM
+-- Generation Time: Oct 15, 2025 at 02:23 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -116,6 +116,22 @@ INSERT INTO `recipes` (`id`, `user_id`, `title`, `is_community`, `description`, 
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `recipe_ratings`
+--
+
+CREATE TABLE `recipe_ratings` (
+  `id` int(11) NOT NULL,
+  `recipe_id` int(11) NOT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `user_name` varchar(100) DEFAULT NULL,
+  `rating` int(11) NOT NULL CHECK (`rating` >= 1 and `rating` <= 5),
+  `comment` text DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `users`
 --
 
@@ -133,8 +149,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `first_name`, `last_name`, `email`, `password`, `created_at`) VALUES
-(1, 'Amk', 'Amk', 'amk@gmail.com', '$2y$10$/nLrn1Dy9NNyxVF9/GakgeJA1VyXzuQXe7chE2wv5SHaNK81u0gme', '2025-10-15 08:39:56'),
-(2, 'Aung Min', 'Khant', 'agminkhant@gmail.com', '$2y$10$QBNK2sDt/DU3Uf.2P0l8Fuu3m9XVMIoZ.wI.WL5QEXuCzTmeqz4Mq', '2025-10-15 09:40:39');
+(1, 'Amk', 'Amk', 'amk@gmail.com', '$2y$10$/nLrn1Dy9NNyxVF9/GakgeJA1VyXzuQXe7chE2wv5SHaNK81u0gme', '2025-10-15 08:39:56');
 
 --
 -- Indexes for dumped tables
@@ -164,6 +179,14 @@ ALTER TABLE `news`
 --
 ALTER TABLE `recipes`
   ADD PRIMARY KEY (`id`),
+  ADD KEY `user_id` (`user_id`);
+
+--
+-- Indexes for table `recipe_ratings`
+--
+ALTER TABLE `recipe_ratings`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `unique_user_recipe` (`recipe_id`,`user_id`),
   ADD KEY `user_id` (`user_id`);
 
 --
@@ -202,6 +225,12 @@ ALTER TABLE `recipes`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=902;
 
 --
+-- AUTO_INCREMENT for table `recipe_ratings`
+--
+ALTER TABLE `recipe_ratings`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
@@ -222,6 +251,13 @@ ALTER TABLE `cooking_tips`
 --
 ALTER TABLE `recipes`
   ADD CONSTRAINT `recipes_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE SET NULL;
+
+--
+-- Constraints for table `recipe_ratings`
+--
+ALTER TABLE `recipe_ratings`
+  ADD CONSTRAINT `recipe_ratings_ibfk_1` FOREIGN KEY (`recipe_id`) REFERENCES `recipes` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `recipe_ratings_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE SET NULL;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

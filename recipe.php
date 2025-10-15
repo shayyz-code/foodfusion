@@ -107,10 +107,31 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
                 <div class="recipe-rating-comments mt-5">
                     <h4>Ratings & Comments</h4>
                     
+                    <?php
+                    // Display rating messages
+                    if (isset($_SESSION['rating_message'])) {
+                        $message_type = isset($_SESSION['rating_type']) ? $_SESSION['rating_type'] : 'info';
+                        echo '<div class="alert alert-' . $message_type . ' alert-dismissible fade show" role="alert">';
+                        echo $_SESSION['rating_message'];
+                        echo '<button type="button" class="close" data-dismiss="alert" aria-label="Close">';
+                        echo '<span aria-hidden="true">&times;</span>';
+                        echo '</button>';
+                        echo '</div>';
+                        unset($_SESSION['rating_message']);
+                        unset($_SESSION['rating_type']);
+                    }
+                    ?>
+                    
                     <!-- Rating Form -->
                     <div class="rating-form mb-4">
                         <form action="rate_recipe.php" method="post">
                             <input type="hidden" name="recipe_id" value="<?php echo $recipe_id; ?>">
+                            <div class="form-group">
+                                <label for="user_name">Your Name:</label>
+                                <input type="text" class="form-control" id="user_name" name="user_name" 
+                                       value="<?php echo isset($_SESSION['user_id']) ? $_SESSION['first_name'] . ' ' . $_SESSION['last_name'] : ''; ?>" 
+                                       required>
+                            </div>
                             <div class="form-group">
                                 <label>Rate this recipe:</label>
                                 <div class="rating-stars mb-2">
@@ -119,12 +140,14 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
                                     <i class="far fa-star" data-value="3"></i>
                                     <i class="far fa-star" data-value="4"></i>
                                     <i class="far fa-star" data-value="5"></i>
-                                    <input type="hidden" name="rating" id="rating-value" value="0">
+                                    <input type="hidden" name="rating" id="rating-value" value="0" required>
                                 </div>
+                                <small class="text-muted">Click on the stars to rate</small>
                             </div>
                             <div class="form-group">
                                 <label for="comment">Your Comment:</label>
-                                <textarea class="form-control" id="comment" name="comment" rows="3"></textarea>
+                                <textarea class="form-control" id="comment" name="comment" rows="3" 
+                                          placeholder="Share your thoughts about this recipe..." required></textarea>
                             </div>
                             <button type="submit" class="btn btn-primary">Submit Rating</button>
                         </form>
@@ -132,38 +155,82 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
                     
                     <!-- Comments Display -->
                     <div class="comments-section">
-                        <h5>User Comments</h5>
+                        <?php
+                        // Get average rating
+                        $avg_rating_query = "SELECT AVG(rating) as avg_rating, COUNT(*) as total_ratings FROM recipe_ratings WHERE recipe_id = ?";
+                        $stmt = mysqli_prepare($conn, $avg_rating_query);
+                        mysqli_stmt_bind_param($stmt, "i", $recipe_id);
+                        mysqli_stmt_execute($stmt);
+                        $avg_result = mysqli_stmt_get_result($stmt);
+                        $avg_data = mysqli_fetch_assoc($avg_result);
+                        
+                        $avg_rating = round($avg_data['avg_rating'], 1);
+                        $total_ratings = $avg_data['total_ratings'];
+                        ?>
+                        
+                        <div class="rating-summary mb-4">
+                            <h5>User Ratings & Comments</h5>
+                            <?php if ($total_ratings > 0): ?>
+                                <div class="d-flex align-items-center mb-3">
+                                    <div class="rating-display mr-3">
+                                        <?php
+                                        for ($i = 1; $i <= 5; $i++) {
+                                            if ($i <= $avg_rating) {
+                                                echo '<i class="fas fa-star text-warning"></i>';
+                                            } elseif ($i - 0.5 <= $avg_rating) {
+                                                echo '<i class="fas fa-star-half-alt text-warning"></i>';
+                                            } else {
+                                                echo '<i class="far fa-star text-warning"></i>';
+                                            }
+                                        }
+                                        ?>
+                                    </div>
+                                    <span class="h6 mb-0"><?php echo $avg_rating; ?> out of 5</span>
+                                    <span class="text-muted ml-2">(<?php echo $total_ratings; ?> rating<?php echo $total_ratings != 1 ? 's' : ''; ?>)</span>
+                                </div>
+                            <?php else: ?>
+                                <p class="text-muted">No ratings yet. Be the first to rate this recipe!</p>
+                            <?php endif; ?>
+                        </div>
+                        
                         <div class="comment-list">
-                            <!-- Sample comments - in a real app, these would be loaded from the database -->
-                            <div class="comment-item p-3 mb-3 bg-light rounded">
-                                <div class="d-flex justify-content-between">
-                                    <h6>John Doe</h6>
-                                    <div class="rating-display">
-                                        <i class="fas fa-star text-warning"></i>
-                                        <i class="fas fa-star text-warning"></i>
-                                        <i class="fas fa-star text-warning"></i>
-                                        <i class="fas fa-star text-warning"></i>
-                                        <i class="far fa-star text-warning"></i>
-                                    </div>
-                                </div>
-                                <p class="mb-1">This recipe was amazing! I made it for my family and everyone loved it.</p>
-                                <small class="text-muted">Posted on October 15, 2023</small>
-                            </div>
+                            <?php
+                            // Get all comments for this recipe
+                            $comments_query = "SELECT user_name, rating, comment, created_at FROM recipe_ratings 
+                                             WHERE recipe_id = ? AND comment IS NOT NULL AND comment != '' 
+                                             ORDER BY created_at DESC";
+                            $stmt = mysqli_prepare($conn, $comments_query);
+                            mysqli_stmt_bind_param($stmt, "i", $recipe_id);
+                            mysqli_stmt_execute($stmt);
+                            $comments_result = mysqli_stmt_get_result($stmt);
                             
-                            <div class="comment-item p-3 mb-3 bg-light rounded">
-                                <div class="d-flex justify-content-between">
-                                    <h6>Jane Smith</h6>
-                                    <div class="rating-display">
-                                        <i class="fas fa-star text-warning"></i>
-                                        <i class="fas fa-star text-warning"></i>
-                                        <i class="fas fa-star text-warning"></i>
-                                        <i class="far fa-star text-warning"></i>
-                                        <i class="far fa-star text-warning"></i>
+                            if (mysqli_num_rows($comments_result) > 0) {
+                                while ($comment = mysqli_fetch_assoc($comments_result)) {
+                            ?>
+                                <div class="comment-item p-3 mb-3 bg-light rounded">
+                                    <div class="d-flex justify-content-between">
+                                        <h6><?php echo htmlspecialchars($comment['user_name']); ?></h6>
+                                        <div class="rating-display">
+                                            <?php
+                                            for ($i = 1; $i <= 5; $i++) {
+                                                if ($i <= $comment['rating']) {
+                                                    echo '<i class="fas fa-star text-warning"></i>';
+                                                } else {
+                                                    echo '<i class="far fa-star text-warning"></i>';
+                                                }
+                                            }
+                                            ?>
+                                        </div>
                                     </div>
+                                    <p class="mb-1"><?php echo htmlspecialchars($comment['comment']); ?></p>
+                                    <small class="text-muted">Posted on <?php echo date('F j, Y', strtotime($comment['created_at'])); ?></small>
                                 </div>
-                                <p class="mb-1">Good recipe, but I had to adjust the seasoning to my taste.</p>
-                                <small class="text-muted">Posted on October 10, 2023</small>
-                            </div>
+                            <?php
+                                }
+                            } else {
+                                echo '<p class="text-muted">No comments yet. Be the first to share your thoughts!</p>';
+                            }
+                            ?>
                         </div>
                     </div>
                 </div>

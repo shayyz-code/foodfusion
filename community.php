@@ -115,7 +115,7 @@ include 'includes/header.php';
             <h1 class="display-4">Community Cookbook</h1>
             <p class="lead">Share your culinary masterpieces and discover recipes from fellow food enthusiasts</p>
             <?php if (!$isLoggedIn): ?>
-                <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#loginModal">Join to Share Your Recipes</button>
+                <button class="btn btn-primary btn-lg join-btn" data-toggle="modal" data-target="#loginModal">Join to Share Your Recipes</button>
             <?php endif; ?>
         </div>
     </section>

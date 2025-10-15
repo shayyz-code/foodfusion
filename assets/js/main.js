@@ -1,28 +1,36 @@
 // FoodFusion Main JavaScript File
 $(document).ready(function () {
   // Toggle between login and registration modals
-  $("#loginLink").on("click", function (e) {
+  // Function to switch modals
+  function switchModal(showId) {
+    var showModal = $(`#${showId}`)
+
+    $(".modal").modal("hide")
+
+    $("body").removeClass("modal-open")
+    $(".modal-backdrop").remove()
+
+    showModal.modal("show")
+  }
+
+  // Login link → open login modal
+  document.getElementById("loginLink")?.addEventListener("click", function (e) {
     e.preventDefault()
-    $("#registerModal").modal("hide")
-    $("#loginModal").modal("show")
+    switchModal("registerModal")
   })
 
-  $("#registerLink").on("click", function (e) {
-    e.preventDefault()
-    $("#loginModal").modal("hide")
-    $("#registerModal").modal("show")
-  })
-
-  // Ensure modal buttons work
-  $('[data-toggle="modal"]').on("click", function () {
-    var target = $(this).data("target")
-    $(target).modal("show")
-  })
+  // Register link → open register modal
+  document
+    .getElementById("registerLink")
+    ?.addEventListener("click", function (e) {
+      e.preventDefault()
+      switchModal("loginModal")
+    })
 
   // Show join modal when join button is clicked
   $(".join-btn").on("click", function (e) {
     e.preventDefault()
-    $("#registerModal").modal("show")
+    switchModal("registerModal", "loginModal")
   })
 
   // Handle login form submission
@@ -66,7 +74,6 @@ $(document).ready(function () {
             $("#loginModal").modal("show")
           }, 500)
         } else {
-          console.log(response)
           alert("Registration failed: " + response.message)
         }
       },
@@ -217,7 +224,7 @@ $(document).ready(function () {
     instructionCount = $(".instruction-row").length
   })
 
-  // Rating system
+  // Enhanced Rating system
   $(".rating-stars i").on("click", function () {
     const value = $(this).data("value")
     $("#rating-value").val(value)
@@ -230,5 +237,62 @@ $(document).ready(function () {
         $(this).removeClass("fas").addClass("far")
       }
     })
+  })
+
+  // Star Rating Hover Effect
+  $(".rating-stars i").on("mouseenter", function () {
+    var rating = $(this).data("value")
+    var stars = $(this).parent().find("i")
+
+    stars.each(function (index) {
+      if ($(this).data("value") <= rating) {
+        $(this).removeClass("far").addClass("fas")
+      } else {
+        $(this).removeClass("fas").addClass("far")
+      }
+    })
+  })
+
+  // Reset stars on mouse leave if no rating selected
+  $(".rating-stars").on("mouseleave", function () {
+    var selectedRating = $("#rating-value").val()
+    var stars = $(this).find("i")
+
+    if (selectedRating > 0) {
+      stars.each(function () {
+        if ($(this).data("value") <= selectedRating) {
+          $(this).removeClass("far").addClass("fas")
+        } else {
+          $(this).removeClass("fas").addClass("far")
+        }
+      })
+    } else {
+      stars.removeClass("fas").addClass("far")
+    }
+  })
+
+  // Form validation for rating
+  $('form[action*="rate_recipe.php"]').on("submit", function (e) {
+    var rating = $("#rating-value").val()
+    var comment = $("#comment").val().trim()
+    var userName = $("#user_name").val().trim()
+
+    if (rating == 0) {
+      e.preventDefault()
+      alert("Please select a rating before submitting.")
+      return false
+    }
+
+    if (comment === "") {
+      e.preventDefault()
+      alert("Please write a comment before submitting.")
+      return false
+    }
+
+    if (userName === "") {
+      e.preventDefault()
+      alert("Please enter your name before submitting.")
+      return false
+    }
   })
 })
